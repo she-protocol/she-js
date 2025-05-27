@@ -1,0 +1,4 @@
+version: v1
+name:  buf.build/she-protocol/confidentialtransfers
+deps:
+  - buf.build/she-protocol/third-party

@@ -1,0 +1,15 @@
+node_modules
+scripts/
+library/
+protoc/
+public/
+bin/
+
+.gitkeep
+jest.config.ts
+tsconfig.json
+tsconfig.*.json
+
+yarn-error.log
+
+buf.*.yaml

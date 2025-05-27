@@ -1,0 +1,53 @@
+flags:
+  cosmjs:
+    paths:
+      - packages/cosmjs/**
+  cosmos:
+    paths:
+      - packages/cosmos/**
+  create-she:
+    paths:
+      - packages/create-she/**
+  evm:
+    paths:
+      - packages/registry/**
+  ledger:
+    paths:
+      - packages/ledger/**
+  registry:
+    paths:
+      - packages/registry/**
+  she-global-wallet:
+    paths:
+      - packages/she-global-wallet/**
+coverage:
+  status:
+    project:
+      cosmjs:
+        target: 80%
+        flags:
+          - cosmjs
+      cosmos:
+        target: 80%
+        flags:
+          - cosmos
+      create-she:
+        target: 80%
+        flags:
+          - create-she
+      evm:
+        target: 80%
+        flags:
+          - evm
+      ledger:
+        target: 80%
+        flags:
+          - ledger
+      registry:
+        target: 80%
+        flags:
+          - registry
+      she-global-wallet:
+        target: 80%
+        flags:
+          - she-global-wallet
