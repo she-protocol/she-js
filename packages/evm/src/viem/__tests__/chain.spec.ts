@@ -1,8 +1,8 @@
-import { seiLocal } from '../chain';
+import { sheLocal } from '../chain';
 
-describe('seiLocal chain', () => {
+describe('sheLocal chain', () => {
 	it('should be a valid chain definition', () => {
-		expect(seiLocal).toMatchObject({
+		expect(sheLocal).toMatchObject({
 			id: 713715,
 			name: 'She Local',
 			nativeCurrency: {

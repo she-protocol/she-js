@@ -1,6 +1,6 @@
 import { CosmWasmClient, type HttpEndpoint, SigningCosmWasmClient, type SigningCosmWasmClientOptions } from '@cosmjs/cosmwasm-stargate';
 import type { OfflineSigner } from '@cosmjs/proto-signing';
-import { createSeiAminoTypes, createSeiRegistry } from './stargateClient';
+import { createSheAminoTypes, createSheRegistry } from './stargateClient';
 
 /**
  * Returns a interface used to interact with the CosmWASM Contracts on chain.
@@ -59,7 +59,7 @@ export const getCosmWasmClient = async (rpcEndpoint: string | HttpEndpoint): Pro
  * const signingCosmWasmClient = await getSigningCosmWasmClient(RPC_URL, offlineSigner);
  *
  * // Execute a message on a smart contract
- * const fee = calculateFee(150000, "0.1usei");
+ * const fee = calculateFee(150000, "0.1ushe");
  * const msg = { mint: {} };
  *
  * const result = await signingCosmWasmClient.execute(SENDER_ADDRESS, CONTRACT_ADDRESS, msg, fee);
@@ -76,8 +76,8 @@ export const getSigningCosmWasmClient = async (
 	signer: OfflineSigner,
 	options?: SigningCosmWasmClientOptions
 ): Promise<SigningCosmWasmClient> => {
-	const registry = createSeiRegistry();
-	const aminoTypes = createSeiAminoTypes();
+	const registry = createSheRegistry();
+	const aminoTypes = createSheAminoTypes();
 	return SigningCosmWasmClient.connectWithSigner(rpcEndpoint, signer, {
 		registry,
 		aminoTypes,

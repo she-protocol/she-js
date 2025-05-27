@@ -10,7 +10,7 @@ export interface ChainInfo {
 	network_type: 'mainnet' | 'testnet' | 'devnet';
 	/** The unique identifier for the She network. 'pacific-1' | 'atlantic-2' | 'arctic-1' */
 	chain_id: string;
-	/** The name of the daemon process that runs the node software for the blockchain. (seid) */
+	/** The name of the daemon process that runs the node software for the blockchain. (shed) */
 	daemon_name: string;
 	/** The prefix used for Bech32 encoded addresses on the network. (she) */
 	bech32_prefix: string;

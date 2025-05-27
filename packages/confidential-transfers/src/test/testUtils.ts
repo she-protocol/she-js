@@ -6,7 +6,7 @@ export async function fundAddress(addr: string, amount="100000000000000000000000
 }
 
 export async function evmSend(addr: string, fromKey: string, amount="10000000000000000000000000") {
-    const output = await execCommand(`seid tx evm send ${addr} ${amount} --from ${fromKey} -b block -y`);
+    const output = await execCommand(`shed tx evm send ${addr} ${amount} --from ${fromKey} -b block -y`);
     return output.replace(/.*0x/, "0x").trim()
 }
 

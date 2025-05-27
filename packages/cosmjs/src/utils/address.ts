@@ -112,7 +112,7 @@ export const verifyDigest32 = (digest: Uint8Array, signature: Uint8Array, pubKey
  * @returns True if a string is a valid She address
  * @category Utils
  */
-export const isValidSeiCosmosAddress = (address: string) => {
+export const isValidSheCosmosAddress = (address: string) => {
 	try {
 		const { prefix } = fromBech32(address);
 		return prefix && prefix === 'she';
@@ -128,8 +128,8 @@ export const isValidSeiCosmosAddress = (address: string) => {
  * @returns A shortened version of the address in the format she...xxxxx. Returns the input address if it is not a valid she address.
  * @category Utils
  */
-export const truncateSeiAddress = (address: string) => {
-	if (!isValidSeiCosmosAddress(address)) {
+export const truncateSheAddress = (address: string) => {
+	if (!isValidSheCosmosAddress(address)) {
 		return address;
 	}
 	return `${address.slice(0, 3)}....${address.slice(address.length - 5)}`;

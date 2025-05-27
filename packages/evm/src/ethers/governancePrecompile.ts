@@ -13,7 +13,7 @@ export const ETHERS_GOVERNANCE_PRECOMPILE_ABI = GOVERNANCE_PRECOMPILE_ABI as Int
  *
  * @example
  * ```tsx
- * import { getGovernancePrecompileEthersV6Contract, parseSei } from '@she-js/evm/ethers';
+ * import { getGovernancePrecompileEthersV6Contract, parseShe } from '@she-js/evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(); // or any other provider
@@ -22,7 +22,7 @@ export const ETHERS_GOVERNANCE_PRECOMPILE_ABI = GOVERNANCE_PRECOMPILE_ABI as Int
  * const governancePrecompileContract = getGovernancePrecompileEthersV6Contract(signer);
  *
  * // Surround with try/catch for detailed errors
- * const depositResponse = await governancePrecompileContract.connect(signer).deposit('1', { value: parseSei(1) });
+ * const depositResponse = await governancePrecompileContract.connect(signer).deposit('1', { value: parseShe(1) });
  * console.log('Deposit Response:', depositResponse);
  * ```
  *

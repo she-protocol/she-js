@@ -1,7 +1,7 @@
 import type { StdSignDoc, StdSignature } from '@cosmjs/amino';
 import { serializeSignDoc } from '@cosmjs/amino/build/signdoc';
 import { fromBase64 } from '@cosmjs/encoding';
-import { compressedPubKeyToAddress, isValidSeiCosmosAddress, verifyDigest32 } from './address';
+import { compressedPubKeyToAddress, isValidSheCosmosAddress, verifyDigest32 } from './address';
 import { sha256 } from './hash';
 
 /**
@@ -97,7 +97,7 @@ function checkAndValidateADR36AminoSignDoc(signDoc: StdSignDoc): boolean {
 	if (!signer) {
 		throw new Error('Empty signer in the ADR-36 msg');
 	}
-	isValidSeiCosmosAddress(signer);
+	isValidSheCosmosAddress(signer);
 	const data = msg.value.data;
 	if (!data) {
 		throw new Error('Empty data in the ADR-36 msg');

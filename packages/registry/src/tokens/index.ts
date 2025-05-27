@@ -50,7 +50,7 @@ export interface Token {
 /**
  * A mapping of all supported She network names to their respective arrays of `Token` objects.
  */
-type SeiTokens = {
+type SheTokens = {
 	/** Each network name is associated with an array of `Token` objects. */
 	[network in Network]: Token[];
 };
@@ -66,7 +66,7 @@ type SeiTokens = {
  * ```tsx
  * import { TOKEN_LIST } from '@she-js/registry';
  *
- * const uSei = TOKEN_LIST['pacific-1'].find((asset) => asset.symbol === 'she');
+ * const uShe = TOKEN_LIST['pacific-1'].find((asset) => asset.symbol === 'she');
  * ```
  */
-export const TOKEN_LIST: SeiTokens = TokenListJSON as unknown as SeiTokens;
+export const TOKEN_LIST: SheTokens = TokenListJSON as unknown as SheTokens;

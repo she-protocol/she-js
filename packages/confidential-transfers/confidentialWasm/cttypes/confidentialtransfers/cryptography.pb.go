@@ -70,7 +70,7 @@ func (m *Ciphertext) GetD() []byte {
 }
 
 func init() {
-	proto.RegisterType((*Ciphertext)(nil), "seiprotocol.seichain.confidentialtransfers.Ciphertext")
+	proto.RegisterType((*Ciphertext)(nil), "sheprotocol.shechain.confidentialtransfers.Ciphertext")
 }
 
 func init() {

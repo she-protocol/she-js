@@ -25,7 +25,7 @@ async function main() {
     await fundTx.wait();
 
     // 4) Get the user to sign the denom
-    const denom = "usei";
+    const denom = "ushe";
     const denomHash = getDenomToSignEthers(denom)
 
     const signedDenom = await testWallet.signMessage(denomHash);

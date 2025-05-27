@@ -147,8 +147,8 @@ func (m *CtAccountWithDenom) GetAccount() CtAccount {
 }
 
 func init() {
-	proto.RegisterType((*CtAccount)(nil), "seiprotocol.seichain.confidentialtransfers.CtAccount")
-	proto.RegisterType((*CtAccountWithDenom)(nil), "seiprotocol.seichain.confidentialtransfers.CtAccountWithDenom")
+	proto.RegisterType((*CtAccount)(nil), "sheprotocol.shechain.confidentialtransfers.CtAccount")
+	proto.RegisterType((*CtAccountWithDenom)(nil), "sheprotocol.shechain.confidentialtransfers.CtAccountWithDenom")
 }
 
 func init() {

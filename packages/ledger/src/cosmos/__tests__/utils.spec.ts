@@ -5,7 +5,7 @@ jest.mock('@ledgerhq/hw-transport-node-hid');
 jest.mock('@zondax/ledger-she');
 
 import Transport from '@ledgerhq/hw-transport-node-hid';
-import { SeiApp } from '@zondax/ledger-she';
+import { SheApp } from '@zondax/ledger-she';
 
 describe('Ledger utils', () => {
 	const mockTransport = {};
@@ -15,7 +15,7 @@ describe('Ledger utils', () => {
 	beforeEach(() => {
 		(Transport.create as jest.Mock).mockResolvedValue(mockTransport);
 
-		(SeiApp as unknown as jest.Mock).mockImplementation(() => ({
+		(SheApp as unknown as jest.Mock).mockImplementation(() => ({
 			getEVMAddress: mockGetEVMAddress,
 			getCosmosAddress: mockGetCosmosAddress
 		}));
@@ -28,7 +28,7 @@ describe('Ledger utils', () => {
 		const result = await createTransportAndApp();
 
 		expect(Transport.create).toHaveBeenCalled();
-		expect(SeiApp).toHaveBeenCalledWith(mockTransport);
+		expect(SheApp).toHaveBeenCalledWith(mockTransport);
 		expect(result).toEqual({
 			transport: mockTransport,
 			app: expect.any(Object)
@@ -37,7 +37,7 @@ describe('Ledger utils', () => {
 
 	it('getAddresses returns both EVM and native address', async () => {
 		const mockEvmAddress = '0x123';
-		const mockNativeAddress = { address: 'sei123', pubKey: 'abcd' };
+		const mockNativeAddress = { address: 'she123', pubKey: 'abcd' };
 
 		mockGetEVMAddress.mockResolvedValueOnce(mockEvmAddress);
 		mockGetCosmosAddress.mockResolvedValueOnce(mockNativeAddress);

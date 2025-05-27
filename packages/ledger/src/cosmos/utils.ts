@@ -1,14 +1,14 @@
 import Transport from '@ledgerhq/hw-transport-node-hid';
-import { SeiApp } from '@zondax/ledger-she';
+import { SheApp } from '@zondax/ledger-she';
 
 /**
  * Creates a transport and app instance
  *
- * @returns {Promise<{transport: Transport, app: SeiApp}>} transport and app instances
+ * @returns {Promise<{transport: Transport, app: SheApp}>} transport and app instances
  */
 export const createTransportAndApp = async () => {
 	const transport = await Transport.create();
-	const app = new SeiApp(transport);
+	const app = new SheApp(transport);
 	return { transport, app };
 };
 
@@ -20,7 +20,7 @@ export const createTransportAndApp = async () => {
  * @returns {Promise<{evmAddress: string, nativeAddress: string}>} EVM and Cosmos address objects containing
  * address and public key
  */
-export const getAddresses = async (app: SeiApp, path: string) => {
+export const getAddresses = async (app: SheApp, path: string) => {
 	const evmAddress = await app.getEVMAddress(path);
 	const nativeAddress = await app.getCosmosAddress(path);
 	return { evmAddress, nativeAddress };

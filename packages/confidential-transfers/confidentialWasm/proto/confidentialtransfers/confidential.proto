@@ -1,5 +1,5 @@
 syntax = "proto3";
-package seiprotocol.seichain.confidentialtransfers;
+package sheprotocol.shechain.confidentialtransfers;
 
 import "gogoproto/gogo.proto";
 import "confidentialtransfers/cryptography.proto";

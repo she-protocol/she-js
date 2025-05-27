@@ -470,7 +470,7 @@ function getTransferArgs(transferPayload: MsgTransfer) {
  * Hashes a denom into the format expected by the signing process ("ct:" + denom).
  * Signing this hash generates a secret from which the confidential balances' private keypair can be derived.
  *
- * @param denom - The denom string (e.g., "usei").
+ * @param denom - The denom string (e.g., "ushe").
  * @returns A keccak256 hash of the prefixed denom, ready to sign.
  */
 export function getDenomToSignViem(denom: string) {

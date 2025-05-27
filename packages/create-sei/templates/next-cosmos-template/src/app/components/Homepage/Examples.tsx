@@ -56,9 +56,9 @@ function Examples({ chainId }: ExampleProps) {
 			return undefined;
 		}
 		const queryClient = await getStargateClient(defaultUrls[chainId].rpc);
-		const useiBalance = await queryClient.getBalance(address, 'usei');
-		const seiBalance = Number(useiBalance.amount) / 1000000;
-		setBalance(seiBalance);
+		const usheBalance = await queryClient.getBalance(address, 'ushe');
+		const sheBalance = Number(usheBalance.amount) / 1000000;
+		setBalance(sheBalance);
 	};
 
 	const renderBalanceExample = () => {
@@ -89,7 +89,7 @@ function Examples({ chainId }: ExampleProps) {
 	const fetchCount = async () => {
 		const cosmWasmClient = await getCosmWasmClient(defaultUrls[chainId].rpc);
 		console.log(cosmWasmClient);
-		const CONTRACT_ADDRESS = 'sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m';
+		const CONTRACT_ADDRESS = 'she14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m';
 		const response = await cosmWasmClient.queryContractSmart(CONTRACT_ADDRESS, {
 			get_count: {}
 		});
@@ -108,14 +108,14 @@ function Examples({ chainId }: ExampleProps) {
 
 		try {
 			const senderAddress = address;
-			const CONTRACT_ADDRESS = 'sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m';
+			const CONTRACT_ADDRESS = 'she14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m';
 
 			// Build message content
 			const msg = { increment: {} };
 
 			// Define gas price and limit
 			const fee = {
-				amount: [{ amount: '20000', denom: 'usei' }],
+				amount: [{ amount: '20000', denom: 'ushe' }],
 				gas: '200000'
 			};
 

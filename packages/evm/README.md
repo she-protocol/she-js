@@ -53,7 +53,7 @@ const accounts = await provider.send('eth_requestAccounts', []);
 
 const contract = getAddressPrecompileEthersV6Contract(ADDRESS_PRECOMPILE_ADDRESS, signer);
 
-const cosmosAddress = await contract.getSeiAddr(accounts[0]);
+const cosmosAddress = await contract.getSheAddr(accounts[0]);
 ```
 
 <br>
@@ -68,12 +68,12 @@ This package exports `viem` Chains and precompile ABI's for She. The ABI used in
 ## Utils
 This package also exports a set of utility functions for interacting with the EVM on She.
 
-### `parseSei`
-Parses an amount of She to the smallest unit of She (uSei).
+### `parseShe`
+Parses an amount of She to the smallest unit of She (uShe).
 ```ts
-import { parseSei } from '@she-js/evm';
+import { parseShe } from '@she-js/evm';
 
-const amount = parseSei('1000000');
+const amount = parseShe('1000000');
 console.log(amount); // 1000000000000000000
 ```
 
@@ -111,7 +111,7 @@ The Address precompile contract enables the retrieval of associated EVM addresse
 | Function Name                                                                          | Input Parameters  | Return Value           | Description                                                      |
 |----------------------------------------------------------------------------------------|-------------------|------------------------|------------------------------------------------------------------|
 | [`getEvmAddr`](/she-js/docs/interfaces/evm.AddressPrecompileFunctions.html#getEvmAddr) | `addr: ` `string` | `{ response: string }` | Retrieves the associated EVM address for a given Cosmos address. |
-| [`getSeiAddr`](/she-js/docs/interfaces/evm.AddressPrecompileFunctions.html#getSeiAddr) | `addr: ` `string` | `{ response: string }` | Retrieves the associated Cosmos address for a given EVM address. |
+| [`getSheAddr`](/she-js/docs/interfaces/evm.AddressPrecompileFunctions.html#getSheAddr) | `addr: ` `string` | `{ response: string }` | Retrieves the associated Cosmos address for a given EVM address. |
 | [`associate`](/she-js/docs/interfaces/evm.AddressPrecompileFunctions.html#associate)   | `v: ` `string`, `r: ` `string`, `s: ` `string`, `customMessage: ` `string` | `{ response: string }` | Associates an EVM address with it's corresponding She Native address on chain using a signature. |
 | [`associatePubKey`](/she-js/docs/interfaces/evm.AddressPrecompileFunctions.html#associatePubKey)   | `pubKeyHex: ` `string` | `{ response: string }` | Associates an EVM address with it's corresponding Cosmos address on chain using the Hex-Encoded compressed pubkey (excluding the '0x'). |
 

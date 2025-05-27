@@ -7,10 +7,10 @@
   - [Parameters](#createTransportAndApp-parameters)
 - [getAddresses](#getaddresses)
   - [Parameters](#getAddresses-parameters)
-- [SeiLedgerOfflineAminoSigner](#seiledgerofflineaminosigner)
-  - [Constructor](#SeiLedgerOfflineAminoSigner-constructor)
-  - [getAccounts](#SeiLedgerOfflineAminoSigner-getAccounts)
-  - [signAmino](#SeiLedgerOfflineAminoSigner-signAmino)
+- [SheLedgerOfflineAminoSigner](#sheledgerofflineaminosigner)
+  - [Constructor](#SheLedgerOfflineAminoSigner-constructor)
+  - [getAccounts](#SheLedgerOfflineAminoSigner-getAccounts)
+  - [signAmino](#SheLedgerOfflineAminoSigner-signAmino)
 - [removeLeadingZeros](#removeleadingzeros)
   - [Parameters](#removeLeadingZeros-parameters)
 
@@ -30,18 +30,18 @@ import {
 import {
   createTransportAndApp,
   getAddresses,
-  SeiLedgerOfflineAminoSigner
+  SheLedgerOfflineAminoSigner
 } from "@she-js/ledger";
 
 const testApp = async () => {
-  const validatorAddress = "seivaloper1sq7x0r2mf3gvwr2l9amtlye0yd3c6dqa4th95v";
+  const validatorAddress = "shevaloper1sq7x0r2mf3gvwr2l9amtlye0yd3c6dqa4th95v";
   const rpcUrl = "https://rpc-testnet.she-apis.com/";
   const memo = "Delegation";
   const path = "m/44'/60'/0'/0/0";
 
   const {app} = await createTransportAndApp();
   const {nativeAddress} = await getAddresses(app, path);
-  const ledgerSigner = new SeiLedgerOfflineAminoSigner(app, path)
+  const ledgerSigner = new SheLedgerOfflineAminoSigner(app, path)
   const signingStargateClient = await SigningStargateClient.connectWithSigner(rpcUrl, ledgerSigner)
 
   const msgDelegate = {
@@ -49,12 +49,12 @@ const testApp = async () => {
     value: {
       delegatorAddress: nativeAddress.address,
       validatorAddress: validatorAddress,
-      amount: coins(500, "usei"),
+      amount: coins(500, "ushe"),
     },
   };
 
   const fee: StdFee = {
-    amount: [{denom: "usei", amount: "20000"}],
+    amount: [{denom: "ushe", amount: "20000"}],
     gas: "200000",
   };
 
@@ -72,7 +72,7 @@ testApp();
 - None.
 
 ### Returns:
-- `Promise<{transport: Transport, app: SeiApp}>`: A promise that resolves to an object containing the `transport` and `app` instances.
+- `Promise<{transport: Transport, app: SheApp}>`: A promise that resolves to an object containing the `transport` and `app` instances.
 
 ### Usage:
 ```typescript
@@ -85,7 +85,7 @@ console.log(transport, app);
 ## getAddresses
 
 ### Parameters:
-- `app` (`SeiApp`): An instance of the Ledger She app.
+- `app` (`SheApp`): An instance of the Ledger She app.
 - `path` (`string`): The HD derivation path (e.g., `"m/44'/60'/0'/0/0"`).
 
 ### Returns:
@@ -99,23 +99,23 @@ const { evmAddress, nativeAddress } = await getAddresses(app, "m/44'/60'/0'/0/0"
 console.log(evmAddress, nativeAddress);
 ```
 
-## SeiLedgerOfflineAminoSigner
+## SheLedgerOfflineAminoSigner
 
 ### Constructor
 
 ```typescript
-new SeiLedgerOfflineAminoSigner(app: SeiApp, path: string)
+new SheLedgerOfflineAminoSigner(app: SheApp, path: string)
 ```
 
 #### Parameters:
-- `app` (`SeiApp`): An instance of the Ledger She app.
+- `app` (`SheApp`): An instance of the Ledger She app.
 - `path` (`string`): The HD derivation path (e.g., `"m/44'/60'/0'/0/0"`).
 
 #### Usage:
 ```typescript
-import { SeiLedgerOfflineAminoSigner } from '@she-js/ledger';
+import { SheLedgerOfflineAminoSigner } from '@she-js/ledger';
 
-const ledgerSigner = new SeiLedgerOfflineAminoSigner(app, "m/44'/60'/0'/0/0");
+const ledgerSigner = new SheLedgerOfflineAminoSigner(app, "m/44'/60'/0'/0/0");
 ```
 
 ### getAccounts
@@ -125,10 +125,10 @@ const ledgerSigner = new SeiLedgerOfflineAminoSigner(app, "m/44'/60'/0'/0/0");
 
 #### Usage:
 ```typescript
-import { SeiLedgerOfflineAminoSigner } from '@she-js/ledger';
+import { SheLedgerOfflineAminoSigner } from '@she-js/ledger';
 
 const accounts = await ledgerSigner.getAccounts();
-console.log(accounts); // { address: 'sei1...', pubkey: { type: 'tendermint/PubKeySecp256k1', value: '...' } }
+console.log(accounts); // { address: 'she1...', pubkey: { type: 'tendermint/PubKeySecp256k1', value: '...' } }
 ```
 
 ### signAmino
@@ -142,10 +142,10 @@ console.log(accounts); // { address: 'sei1...', pubkey: { type: 'tendermint/PubK
 
 #### Usage:
 ```typescript
-import { SeiLedgerOfflineAminoSigner } from '@she-js/ledger';
+import { SheLedgerOfflineAminoSigner } from '@she-js/ledger';
 import { StdSignDoc } from '@cosmjs/amino';
 
 const signDoc: StdSignDoc = { /* your StdSignDoc object */ };
-const signResponse = await ledgerSigner.signAmino('sei123...', signDoc);
+const signResponse = await ledgerSigner.signAmino('she123...', signDoc);
 console.log(signResponse.signed, signResponse.signature);
 ```

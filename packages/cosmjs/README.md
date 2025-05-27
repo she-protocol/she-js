@@ -17,8 +17,8 @@ The `@she-js/cosmjs` package contains helper functions for wallet connection, tr
     - [`compressedPubKeyToAddress`](#compressedpubkeytoaddress)
     - [`getAddressHashFromPubKey`](#getaddresshashfrompubkey)
     - [`verifyDigest32`](#verifydigest32)
-    - [`isValidSeiCosmosAddress`](#isvalidseicosmosaddress)
-    - [`truncateSeiAddress`](#truncateseiaddress)
+    - [`isValidSheCosmosAddress`](#isvalidshecosmosaddress)
+    - [`truncateSheAddress`](#truncatesheaddress)
   - [Bech32](#bech32)
     - [`toBech32`](#tobech32)
   - [Hash](#hash)
@@ -82,13 +82,13 @@ Cosmos Kit is a helpful library for connecting to various She wallet extensions.
 
 #### Importing CosmosKit Configs
 ```tsx
-import { COSMOS_KIT_ASSET_LIST, PACIFIC_1_SEI_COSMOS_KIT_CHAIN, ATLANTIC_2_SEI_COSMOS_KIT_CHAIN, ARCTIC_1_SEI_COSMOS_KIT_CHAIN } from '@she-js/cosmjs'
+import { COSMOS_KIT_ASSET_LIST, PACIFIC_1_SHE_COSMOS_KIT_CHAIN, ATLANTIC_2_SHE_COSMOS_KIT_CHAIN, ARCTIC_1_SHE_COSMOS_KIT_CHAIN } from '@she-js/cosmjs'
 import { wallets } from '@cosmos-kit/keplr';
 
 function CosmosApp() {
   return (
     <ChainProvider
-      chains={[PACIFIC_1_SEI_COSMOS_KIT_CHAIN, ATLANTIC_2_SEI_COSMOS_KIT_CHAIN, ARCTIC_1_SEI_COSMOS_KIT_CHAIN]}
+      chains={[PACIFIC_1_SHE_COSMOS_KIT_CHAIN, ATLANTIC_2_SHE_COSMOS_KIT_CHAIN, ARCTIC_1_SHE_COSMOS_KIT_CHAIN]}
       assetLists={[COSMOS_KIT_ASSET_LIST]}
       wallets={wallets} // whatever wallets you prefer
     >
@@ -129,12 +129,12 @@ Using Custom Registry or Amino Types:
 import { Registry } from "@cosmjs/proto-signing";
 import { defaultRegistryTypes } from "@cosmjs/stargate";
 import { getSigningStargateClient } from '@she-js/cosmjs';
-import { seiprotocol, seiprotocolProtoRegistry } from "@she-js/proto";
+import { sheprotocol, sheprotocolProtoRegistry } from "@she-js/proto";
 
 // Set up She proto registry
 const registry = new Registry([
   ...defaultRegistryTypes,
-  ...seiprotocolProtoRegistry,
+  ...sheprotocolProtoRegistry,
 ]);
 
 // Create a client with registry
@@ -157,7 +157,7 @@ Derives and returns an address for the given private key.
 ```tsx
 import { deriveAddressesFromPrivateKey } from '@she-js/cosmjs';
 
-const seiAddress = deriveAddressesFromPrivateKey(PRIVATE_KEY);
+const sheAddress = deriveAddressesFromPrivateKey(PRIVATE_KEY);
 ```
 
 #### `pubKeyToKeyPair`
@@ -243,7 +243,7 @@ const isValid = verifyDigest32(new Uint8Array([/* digest */]), new Uint8Array([/
 console.log(isValid);
 ```
 
-#### `isValidSeiCosmosAddress`
+#### `isValidSheCosmosAddress`
 Checks if a given string is a valid She address.
 
 - **Parameters:**
@@ -253,13 +253,13 @@ Checks if a given string is a valid She address.
 
 - **Usage:**
 ```tsx
-import { isValidSeiCosmosAddress } from '@she-js/cosmjs';
+import { isValidSheCosmosAddress } from '@she-js/cosmjs';
 
-const isValid = isValidSeiCosmosAddress('sei123...');
+const isValid = isValidSheCosmosAddress('she123...');
 console.log(isValid);
 ```
 
-#### `truncateSeiAddress`
+#### `truncateSheAddress`
 Shortens a She address to display it in the format `she...xxxxx`, where `xxxxx` is the last five characters of the address.
 
 - **Parameters:**
@@ -269,9 +269,9 @@ Shortens a She address to display it in the format `she...xxxxx`, where `xxxxx` 
 
 - **Usage:**
 ```tsx
-import { truncateSeiAddress } from '@she-js/cosmjs';
+import { truncateSheAddress } from '@she-js/cosmjs';
 
-const truncated = truncateSeiAddress('sei123456789abcdefghijk');
+const truncated = truncateSheAddress('she123456789abcdefghijk');
 console.log(truncated);
 ```
 
@@ -360,7 +360,7 @@ Creates a StdSignDoc for an [ADR-36](https://github.com/cosmos/cosmos-sdk/blob/m
 ```tsx
 import { makeADR36AminoSignDoc } from '@she-js/cosmjs';
 
-const signDoc = makeADR36AminoSignDoc('sei123...', 'Hello, She!');
+const signDoc = makeADR36AminoSignDoc('she123...', 'Hello, She!');
 console.log(signDoc);
 ```
 
@@ -378,7 +378,7 @@ Verifies a StdSignature object against the given signer address and expected mes
 ```tsx
 import { verifyArbitrary } from '@she-js/cosmjs';
 
-const isVerified = await verifyArbitrary('sei123...', 'Hello, She!', {
+const isVerified = await verifyArbitrary('she123...', 'Hello, She!', {
   pub_key: { type: 'tendermint/PubKeySecp256k1', value: 'A1B2C3...' },
   signature: 'D4E5F6...'
 });
@@ -400,7 +400,7 @@ const offlineSigner = await window.compass.getOfflineSigner(chainId);
 
 const signingClient = await getSigningStargateClient(RPC_URL, offlineSigner);
 
-const fee = calculateFee(100000, "0.1usei");
+const fee = calculateFee(100000, "0.1ushe");
 const amount = { amount: SEND_AMOUNT, denom: TOKEN_DENOM };
 
 const sendResponse = await signingClient.sendTokens(SENDER_ADDRESS, DESTINATION_ADDRESS, [amount], fee);
@@ -424,9 +424,9 @@ const amount = { amount: SEND_AMOUNT, denom: TOKEN_DENOM };
 const ibcResponse = await signingClient.sendIbcTokens(SENDER_ADDRESS, DESTINATION_ADDRESSS, amount, 'transfer', CHANNEL_ID, undefined, undefined, fee)
 
 // Create message to place an order
-const { placeOrders } = seiprotocol.seichain.dex.MessageComposer.withTypeUrl;
+const { placeOrders } = sheprotocol.shechain.dex.MessageComposer.withTypeUrl;
 const msg = placeOrders({ contractAddr, creator, funds, orders });
-const fee = calculateFee(150000, "0.1usei");
+const fee = calculateFee(150000, "0.1ushe");
 
 // Sign and broadcast the message
 const response = signingClient.signAndBroadcast(firstAccount.address, [msg], fee);
@@ -484,7 +484,7 @@ const offlineSigner = await window.compass.getOfflineSigner(chainId);
 const signingCosmWasmClient = await getSigningCosmWasmClient(RPC_URL, offlineSigner);
 
 // Execute a message on a smart contract
-const fee = calculateFee(150000, "0.1usei");
+const fee = calculateFee(150000, "0.1ushe");
 const msg = { mint: {} };
 
 const result = await signingCosmWasmClient.execute(SENDER_ADDRESS, CONTRACT_ADDRESS, msg, fee);
@@ -493,9 +493,9 @@ const result = await signingCosmWasmClient.execute(SENDER_ADDRESS, CONTRACT_ADDR
 ### Address Validation
 You can validate that a given string is a valid She address:
 ```tsx
-import { isValidSeiAddress } from '@she-js/cosmjs';
+import { isValidSheAddress } from '@she-js/cosmjs';
 
-const isValidSeiAddress = isValidSeiAddress(ADDRESS_TO_TEST);
+const isValidSheAddress = isValidSheAddress(ADDRESS_TO_TEST);
 ```
 
 ### Arbitrary String Signing and Verification
@@ -504,10 +504,10 @@ Sometimes it is necessary to prove account ownership without executing anything 
 ```tsx
 import { verifyArbitrary } from "@she-js/cosmjs";
 
-const SEI_ADDRESS = "sei1...";
+const SHE_ADDRESS = "she1...";
 const message = "Message to sign";
-const stdSignature = await window.compass.signArbitrary('atlantic-2', SEI_ADDRESS, message); // or FIN_WALLET, KEPLR_WALLET, LEAP_WALLET
-const isValid = await verifyArbitrary(SEI_ADDRESS, message, stdSignature);
+const stdSignature = await window.compass.signArbitrary('atlantic-2', SHE_ADDRESS, message); // or FIN_WALLET, KEPLR_WALLET, LEAP_WALLET
+const isValid = await verifyArbitrary(SHE_ADDRESS, message, stdSignature);
 ```
 
 ### Multi-Sig Signing and Broadcasting

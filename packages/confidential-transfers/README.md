@@ -36,7 +36,7 @@ To generate this signature on some denom:
 ```ts
 import { getDenomToSignEthers } from "confidential-ts";
 
-const denom = "usei";
+const denom = "ushe";
 const denomHash = getDenomToSignEthers(denom);
 const signedDenom = await wallet.signMessage(denomHash);
 ```
@@ -84,7 +84,7 @@ console.log("Decrypted balances:", decrypted);
 #### 5. Deposit into Account
 
 Initiates a confidential deposit of the specified amount into the account.
-NOTE: The deposit amount is in the native decimal place (6 decimals for `usei`)
+NOTE: The deposit amount is in the native decimal place (6 decimals for `ushe`)
 ```ts
 import { depositToPrivateBalanceEthers } from "confidential-ts";
 
@@ -108,7 +108,7 @@ await applyPendingBalanceEthers(wallet.address, denom, signedDenom, wallet);
 Withdraws a specified amount from the confidential balance.
 `signedDenom` refers to the signature of the hashed denom (generated in Step 1. above)
 
-NOTE: The withdraw amount is in the native decimal place (6 decimals for `usei`)
+NOTE: The withdraw amount is in the native decimal place (6 decimals for `ushe`)
 ```ts
 import { withdrawFromPrivateBalanceEthers } from "confidential-ts";
 
@@ -121,7 +121,7 @@ await withdrawFromPrivateBalanceEthers(wallet.address, denom, withdrawAmount, si
 Transfers a confidential balance from one account to another. The recipient must have already initialized an account.
 `signedDenom` refers to the signature of the hashed denom (generated in Step 1. above)
 
-NOTE: The deposit amount is in the native decimal place (6 decimals for `usei`)
+NOTE: The deposit amount is in the native decimal place (6 decimals for `ushe`)
 
 ```ts
 import { confidentialTransferEthers } from "confidential-ts";
@@ -161,7 +161,7 @@ import { useSignMessage } from "wagmi";
 
 const { signMessageAsync } = useSignMessage();
 
-const denom = "usei";
+const denom = "ushe";
 const ctDenomHash = getDenomToSignViem(denom);
 
 const signedDenom = await signMessageAsync({
@@ -182,7 +182,7 @@ const { address } = useAccount();
 const publicClient = usePublicClient();
 const { writeContractAsync } = useWriteContract();
 
-const txParams = await getInitializeAccountViemArgs(signedDenom, address, "usei");
+const txParams = await getInitializeAccountViemArgs(signedDenom, address, "ushe");
 const estimatedGas = await publicClient.estimateContractGas(txParams);
 await writeContractAsync({ ...txParams, gas: estimatedGas });
 ```
@@ -196,7 +196,7 @@ import { queryAccountViem } from "she-confidential";
 import { usePublicClient } from "wagmi";
 
 const publicClient = usePublicClient();
-const account = await queryAccountViem(publicClient, address, "usei");
+const account = await queryAccountViem(publicClient, address, "ushe");
 ```
 
 #### 4. Decrypt Confidential Balances
@@ -219,8 +219,8 @@ Send tokens into your confidential account.
 ```ts
 import { getDepositToPrivateBalanceViemArgs } from "she-confidential";
 
-const amount = BigInt(1_000_000); // 1 SHE = 1_000_000 microsei
-const depositParams = getDepositToPrivateBalanceViemArgs(address, "usei", amount);
+const amount = BigInt(1_000_000); // 1 SHE = 1_000_000 microshe
+const depositParams = getDepositToPrivateBalanceViemArgs(address, "ushe", amount);
 const estimatedGas = await publicClient.estimateContractGas(depositParams);
 await writeContractAsync({ ...depositParams, gas: estimatedGas });
 ```
@@ -232,7 +232,7 @@ Move pending balance to available balance (required after a deposit or receiving
 ```ts
 import { getApplyPendingBalancesViemArgs } from "she-confidential";
 
-const applyParams = await getApplyPendingBalancesViemArgs(address, "usei", publicClient, signedDenom);
+const applyParams = await getApplyPendingBalancesViemArgs(address, "ushe", publicClient, signedDenom);
 const estimatedGas = await publicClient.estimateContractGas(applyParams);
 await writeContractAsync({ ...applyParams, gas: estimatedGas });
 ```
@@ -244,7 +244,7 @@ Withdraw from your confidential balance.
 ```ts
 import { getWithdrawFromPrivateBalanceViemArgs } from "she-confidential";
 
-const withdrawParams = await getWithdrawFromPrivateBalanceViemArgs(address, "usei", 500000, publicClient, signedDenom);
+const withdrawParams = await getWithdrawFromPrivateBalanceViemArgs(address, "ushe", 500000, publicClient, signedDenom);
 const estimatedGas = await publicClient.estimateContractGas(withdrawParams);
 await writeContractAsync({ ...withdrawParams, gas: estimatedGas });
 ```
@@ -256,7 +256,7 @@ Send confidential tokens to another account.
 ```ts
 import { getConfidentialTransferViemArgs } from "she-confidential";
 
-const transferParams = await getConfidentialTransferViemArgs(address, recipient, "usei", 500000, publicClient, signedDenom);
+const transferParams = await getConfidentialTransferViemArgs(address, recipient, "ushe", 500000, publicClient, signedDenom);
 const estimatedGas = await publicClient.estimateContractGas(transferParams);
 await writeContractAsync({ ...transferParams, gas: estimatedGas });
 ```

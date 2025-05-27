@@ -2,26 +2,26 @@ import { randomBytes } from 'node:crypto';
 import { describe, expect, it } from '@jest/globals';
 import { secp256k1 } from '@noble/curves/secp256k1';
 import { ec as EllipticCurve } from 'elliptic';
-import { deriveAddressesFromPrivateKey, getAddressHashFromPubKey, isValidSeiCosmosAddress, pubKeyToBytes, pubKeyToKeyPair, verifyDigest32 } from '../address';
-import { truncateSeiAddress } from '../address';
+import { deriveAddressesFromPrivateKey, getAddressHashFromPubKey, isValidSheCosmosAddress, pubKeyToBytes, pubKeyToKeyPair, verifyDigest32 } from '../address';
+import { truncateSheAddress } from '../address';
 import { sha256 } from '../hash';
 
 describe('truncateAddress', () => {
 	it('should return the truncated address with first 3 and last 5 characters for valid she contract addresses', () => {
-		const address = 'sei1v02xglfgtf4dk6jf8xa92my49zs4395zjnf4hzpzrs944znzdztq56zrr0';
-		const truncatedAddress = truncateSeiAddress(address);
+		const address = 'she1v02xglfgtf4dk6jf8xa92my49zs4395zjnf4hzpzrs944znzdztq56zrr0';
+		const truncatedAddress = truncateSheAddress(address);
 		expect(truncatedAddress).toBe('she....6zrr0');
 	});
 
 	it('should return the input address for invalid she addresses', () => {
 		const ethAddress = '0x32Be343B94f860124dC4fEe278FDCBD38C102D88';
-		expect(truncateSeiAddress(ethAddress)).toBe(ethAddress);
+		expect(truncateSheAddress(ethAddress)).toBe(ethAddress);
 
-		const shortAddress = 'sei14ae4g3422thcyuxler2ws3w25fpesrh';
-		expect(truncateSeiAddress(shortAddress)).toBe(shortAddress);
+		const shortAddress = 'she14ae4g3422thcyuxler2ws3w25fpesrh';
+		expect(truncateSheAddress(shortAddress)).toBe(shortAddress);
 
 		const osmoAddress = 'osmo14ae4g3422thcyuxler2ws3w25fpesrh2uqmgm9';
-		expect(truncateSeiAddress(osmoAddress)).toBe(osmoAddress);
+		expect(truncateSheAddress(osmoAddress)).toBe(osmoAddress);
 	});
 });
 
@@ -32,27 +32,27 @@ const MOCK_PUB_KEY = new Uint8Array([
 
 const MOCK_PUB_KEY_ADDRESS = new Uint8Array([238, 39, 110, 158, 63, 196, 185, 243, 87, 44, 63, 181, 99, 247, 136, 235, 53, 144, 126, 40]);
 
-describe('isValidSeiAddress', () => {
+describe('isValidSheAddress', () => {
 	it('should return true for a valid SHE address', () => {
-		const validAddress = 'sei14ae4g3422thcyuxler2ws3w25fpesrh2uqmgm9';
+		const validAddress = 'she14ae4g3422thcyuxler2ws3w25fpesrh2uqmgm9';
 
-		const result = isValidSeiCosmosAddress(validAddress);
+		const result = isValidSheCosmosAddress(validAddress);
 
 		expect(result).toBe(true);
 	});
 
 	it('should return false for an invalid SHE address', () => {
-		const invalidAddress = 'invalidSeiAddress';
+		const invalidAddress = 'invalidSheAddress';
 
-		const result = isValidSeiCosmosAddress(invalidAddress);
+		const result = isValidSheCosmosAddress(invalidAddress);
 
 		expect(result).toBe(false);
 	});
 
 	it('should return false for a non-SHE Bech32 address', () => {
-		const nonSeiAddress = 'osmo1vx3456g8y9jqmg3yngw4thjc89ew6ukfcdr0hs';
+		const nonSheAddress = 'osmo1vx3456g8y9jqmg3yngw4thjc89ew6ukfcdr0hs';
 
-		const result = isValidSeiCosmosAddress(nonSeiAddress);
+		const result = isValidSheCosmosAddress(nonSheAddress);
 
 		expect(result).toBe(false);
 	});
@@ -165,6 +165,6 @@ describe('deriveAddressesFromPrivateKey', () => {
 
 		const address = deriveAddressesFromPrivateKey(privKey);
 		expect(address.startsWith(expectedPrefix)).toBe(true);
-		expect(isValidSeiCosmosAddress(address)).toBe(true);
+		expect(isValidSheCosmosAddress(address)).toBe(true);
 	});
 });

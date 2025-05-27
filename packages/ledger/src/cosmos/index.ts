@@ -1,2 +1,2 @@
-export * from './seiLedgerOfflineAminoSigner';
+export * from './sheLedgerOfflineAminoSigner';
 export * from './utils';

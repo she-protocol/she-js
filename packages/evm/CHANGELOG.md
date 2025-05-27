@@ -34,7 +34,7 @@
 
 ### Patch Changes
 
-- 1554931: Added a new export to connect to a local chain (seid) with viem
+- 1554931: Added a new export to connect to a local chain (shed) with viem
 
 ## 1.4.1
 

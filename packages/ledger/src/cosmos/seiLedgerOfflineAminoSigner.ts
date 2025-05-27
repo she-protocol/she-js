@@ -2,21 +2,21 @@ import { AminoSignResponse, encodeSecp256k1Signature, OfflineAminoSigner, serial
 import { fromHex } from '@cosmjs/encoding';
 import { AccountData } from '@cosmjs/proto-signing';
 import { Secp256k1Signature } from '@cosmjs/crypto';
-import { SeiApp } from '@zondax/ledger-she';
+import { SheApp } from '@zondax/ledger-she';
 
 /**
  *  A signer implementation that uses a Ledger device to sign transactions
  */
-export class SeiLedgerOfflineAminoSigner implements OfflineAminoSigner {
+export class SheLedgerOfflineAminoSigner implements OfflineAminoSigner {
 	private readonly path: string;
-	private readonly app: SeiApp;
+	private readonly app: SheApp;
 
 	/**
-	 * Creates a new SeiLedgerOfflineAminoSigner
+	 * Creates a new SheLedgerOfflineAminoSigner
 	 * @param app Ledger She app instance
 	 * @param path hd derivation path (e.g. "m/44'/60'/0'/0/0")
 	 */
-	constructor(app: SeiApp, path: string) {
+	constructor(app: SheApp, path: string) {
 		this.path = path;
 		this.app = app;
 	}

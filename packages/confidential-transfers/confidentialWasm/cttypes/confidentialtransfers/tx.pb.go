@@ -514,19 +514,19 @@ func (m *MsgCloseAccountResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_MsgCloseAccountResponse proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*MsgTransfer)(nil), "seiprotocol.seichain.confidentialtransfers.MsgTransfer")
-	proto.RegisterType((*MsgTransferResponse)(nil), "seiprotocol.seichain.confidentialtransfers.MsgTransferResponse")
-	proto.RegisterType((*Auditor)(nil), "seiprotocol.seichain.confidentialtransfers.Auditor")
-	proto.RegisterType((*MsgInitializeAccount)(nil), "seiprotocol.seichain.confidentialtransfers.MsgInitializeAccount")
-	proto.RegisterType((*MsgInitializeAccountResponse)(nil), "seiprotocol.seichain.confidentialtransfers.MsgInitializeAccountResponse")
-	proto.RegisterType((*MsgDeposit)(nil), "seiprotocol.seichain.confidentialtransfers.MsgDeposit")
-	proto.RegisterType((*MsgDepositResponse)(nil), "seiprotocol.seichain.confidentialtransfers.MsgDepositResponse")
-	proto.RegisterType((*MsgWithdraw)(nil), "seiprotocol.seichain.confidentialtransfers.MsgWithdraw")
-	proto.RegisterType((*MsgWithdrawResponse)(nil), "seiprotocol.seichain.confidentialtransfers.MsgWithdrawResponse")
-	proto.RegisterType((*MsgApplyPendingBalance)(nil), "seiprotocol.seichain.confidentialtransfers.MsgApplyPendingBalance")
-	proto.RegisterType((*MsgApplyPendingBalanceResponse)(nil), "seiprotocol.seichain.confidentialtransfers.MsgApplyPendingBalanceResponse")
-	proto.RegisterType((*MsgCloseAccount)(nil), "seiprotocol.seichain.confidentialtransfers.MsgCloseAccount")
-	proto.RegisterType((*MsgCloseAccountResponse)(nil), "seiprotocol.seichain.confidentialtransfers.MsgCloseAccountResponse")
+	proto.RegisterType((*MsgTransfer)(nil), "sheprotocol.shechain.confidentialtransfers.MsgTransfer")
+	proto.RegisterType((*MsgTransferResponse)(nil), "sheprotocol.shechain.confidentialtransfers.MsgTransferResponse")
+	proto.RegisterType((*Auditor)(nil), "sheprotocol.shechain.confidentialtransfers.Auditor")
+	proto.RegisterType((*MsgInitializeAccount)(nil), "sheprotocol.shechain.confidentialtransfers.MsgInitializeAccount")
+	proto.RegisterType((*MsgInitializeAccountResponse)(nil), "sheprotocol.shechain.confidentialtransfers.MsgInitializeAccountResponse")
+	proto.RegisterType((*MsgDeposit)(nil), "sheprotocol.shechain.confidentialtransfers.MsgDeposit")
+	proto.RegisterType((*MsgDepositResponse)(nil), "sheprotocol.shechain.confidentialtransfers.MsgDepositResponse")
+	proto.RegisterType((*MsgWithdraw)(nil), "sheprotocol.shechain.confidentialtransfers.MsgWithdraw")
+	proto.RegisterType((*MsgWithdrawResponse)(nil), "sheprotocol.shechain.confidentialtransfers.MsgWithdrawResponse")
+	proto.RegisterType((*MsgApplyPendingBalance)(nil), "sheprotocol.shechain.confidentialtransfers.MsgApplyPendingBalance")
+	proto.RegisterType((*MsgApplyPendingBalanceResponse)(nil), "sheprotocol.shechain.confidentialtransfers.MsgApplyPendingBalanceResponse")
+	proto.RegisterType((*MsgCloseAccount)(nil), "sheprotocol.shechain.confidentialtransfers.MsgCloseAccount")
+	proto.RegisterType((*MsgCloseAccountResponse)(nil), "sheprotocol.shechain.confidentialtransfers.MsgCloseAccountResponse")
 }
 
 func init() { proto.RegisterFile("confidentialtransfers/tx.proto", fileDescriptor_34e86c2ca2c678f9) }

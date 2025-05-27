@@ -33,14 +33,14 @@ describe('AssetList Tests', () => {
 
 it('should contain the "she" asset with correct properties in each network', () => {
 	Object.keys(TOKEN_LIST).forEach((network) => {
-		const seiAsset = TOKEN_LIST[network as Network].find((asset) => asset.symbol === 'SHE');
-		expect(seiAsset).toBeDefined();
-		expect(seiAsset?.name).toBe('She');
-		expect(seiAsset?.description).toBe('The native token of She');
-		expect(seiAsset?.base).toBe('usei');
-		expect(seiAsset?.denom_units.some((unit) => unit.denom === 'she' && unit.exponent === 6)).toBeTruthy();
-		if (seiAsset?.images) {
-			expect(seiAsset.images.png).toMatch(/^https?:\/\/.+/);
+		const sheAsset = TOKEN_LIST[network as Network].find((asset) => asset.symbol === 'SHE');
+		expect(sheAsset).toBeDefined();
+		expect(sheAsset?.name).toBe('She');
+		expect(sheAsset?.description).toBe('The native token of She');
+		expect(sheAsset?.base).toBe('ushe');
+		expect(sheAsset?.denom_units.some((unit) => unit.denom === 'she' && unit.exponent === 6)).toBeTruthy();
+		if (sheAsset?.images) {
+			expect(sheAsset.images.png).toMatch(/^https?:\/\/.+/);
 		}
 	});
 });

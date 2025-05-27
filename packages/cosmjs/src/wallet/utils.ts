@@ -44,7 +44,7 @@ export const getChainSuggest = (chainInfo?: ChainInfo, currencies: Currency[] = 
 		currencies: [
 			{
 				coinDenom: 'SHE',
-				coinMinimalDenom: 'usei',
+				coinMinimalDenom: 'ushe',
 				coinDecimals: 6
 			},
 			...currencies
@@ -52,14 +52,14 @@ export const getChainSuggest = (chainInfo?: ChainInfo, currencies: Currency[] = 
 		feeCurrencies: [
 			{
 				coinDenom: 'SHE',
-				coinMinimalDenom: 'usei',
+				coinMinimalDenom: 'ushe',
 				coinDecimals: 6,
 				gasPriceStep
 			}
 		],
 		stakeCurrency: {
 			coinDenom: 'SHE',
-			coinMinimalDenom: 'usei',
+			coinMinimalDenom: 'ushe',
 			coinDecimals: 6
 		},
 		coinType: 118,

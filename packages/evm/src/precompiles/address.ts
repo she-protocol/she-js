@@ -19,7 +19,7 @@ export const ADDRESS_PRECOMPILE_ABI = [
 	},
 	{
 		inputs: [{ internalType: 'address', name: 'addr', type: 'address' }],
-		name: 'getSeiAddr',
+		name: 'getSheAddr',
 		outputs: [{ internalType: 'string', name: 'response', type: 'string' }],
 		stateMutability: 'view',
 		type: 'function'
@@ -33,7 +33,7 @@ export const ADDRESS_PRECOMPILE_ABI = [
 		],
 		name: 'associate',
 		outputs: [
-			{ internalType: 'string', name: 'seiAddr', type: 'string' },
+			{ internalType: 'string', name: 'sheAddr', type: 'string' },
 			{ internalType: 'address', name: 'evmAddr', type: 'address' }
 		],
 		stateMutability: 'nonpayable',
@@ -43,7 +43,7 @@ export const ADDRESS_PRECOMPILE_ABI = [
 		inputs: [{ internalType: 'string', name: 'pubKeyHex', type: 'string' }],
 		name: 'associatePubKey',
 		outputs: [
-			{ internalType: 'string', name: 'seiAddr', type: 'string' },
+			{ internalType: 'string', name: 'sheAddr', type: 'string' },
 			{ internalType: 'address', name: 'evmAddr', type: 'address' }
 		],
 		stateMutability: 'nonpayable',

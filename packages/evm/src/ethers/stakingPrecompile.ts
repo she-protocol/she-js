@@ -13,7 +13,7 @@ export const ETHERS_STAKING_PRECOMPILE_ABI = STAKING_PRECOMPILE_ABI as Interface
  *
  * @example
  * ```tsx
- * import { getStakingPrecompileEthersV6Contract, parseSei } from '@she-js/evm';
+ * import { getStakingPrecompileEthersV6Contract, parseShe } from '@she-js/evm';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider
@@ -23,7 +23,7 @@ export const ETHERS_STAKING_PRECOMPILE_ABI = STAKING_PRECOMPILE_ABI as Interface
  *
  * const contract = getStakingPrecompileEthersV6Contract(signer);
  *
- * const response = await contract.delegate('0xVALIDATOR_ADDRESS', parseSei(1));
+ * const response = await contract.delegate('0xVALIDATOR_ADDRESS', parseShe(1));
  * console.log('Delegate Response:', response);
  * ```
  *

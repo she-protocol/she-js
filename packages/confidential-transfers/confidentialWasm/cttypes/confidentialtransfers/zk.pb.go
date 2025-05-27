@@ -685,16 +685,16 @@ func (m *ZeroBalanceProof) GetZ() []byte {
 }
 
 func init() {
-	proto.RegisterType((*TransferMsgProofs)(nil), "seiprotocol.seichain.confidentialtransfers.TransferMsgProofs")
-	proto.RegisterType((*InitializeAccountMsgProofs)(nil), "seiprotocol.seichain.confidentialtransfers.InitializeAccountMsgProofs")
-	proto.RegisterType((*WithdrawMsgProofs)(nil), "seiprotocol.seichain.confidentialtransfers.WithdrawMsgProofs")
-	proto.RegisterType((*CloseAccountMsgProofs)(nil), "seiprotocol.seichain.confidentialtransfers.CloseAccountMsgProofs")
-	proto.RegisterType((*PubkeyValidityProof)(nil), "seiprotocol.seichain.confidentialtransfers.PubkeyValidityProof")
-	proto.RegisterType((*CiphertextValidityProof)(nil), "seiprotocol.seichain.confidentialtransfers.CiphertextValidityProof")
-	proto.RegisterType((*RangeProof)(nil), "seiprotocol.seichain.confidentialtransfers.RangeProof")
-	proto.RegisterType((*CiphertextCommitmentEqualityProof)(nil), "seiprotocol.seichain.confidentialtransfers.CiphertextCommitmentEqualityProof")
-	proto.RegisterType((*CiphertextCiphertextEqualityProof)(nil), "seiprotocol.seichain.confidentialtransfers.CiphertextCiphertextEqualityProof")
-	proto.RegisterType((*ZeroBalanceProof)(nil), "seiprotocol.seichain.confidentialtransfers.ZeroBalanceProof")
+	proto.RegisterType((*TransferMsgProofs)(nil), "sheprotocol.shechain.confidentialtransfers.TransferMsgProofs")
+	proto.RegisterType((*InitializeAccountMsgProofs)(nil), "sheprotocol.shechain.confidentialtransfers.InitializeAccountMsgProofs")
+	proto.RegisterType((*WithdrawMsgProofs)(nil), "sheprotocol.shechain.confidentialtransfers.WithdrawMsgProofs")
+	proto.RegisterType((*CloseAccountMsgProofs)(nil), "sheprotocol.shechain.confidentialtransfers.CloseAccountMsgProofs")
+	proto.RegisterType((*PubkeyValidityProof)(nil), "sheprotocol.shechain.confidentialtransfers.PubkeyValidityProof")
+	proto.RegisterType((*CiphertextValidityProof)(nil), "sheprotocol.shechain.confidentialtransfers.CiphertextValidityProof")
+	proto.RegisterType((*RangeProof)(nil), "sheprotocol.shechain.confidentialtransfers.RangeProof")
+	proto.RegisterType((*CiphertextCommitmentEqualityProof)(nil), "sheprotocol.shechain.confidentialtransfers.CiphertextCommitmentEqualityProof")
+	proto.RegisterType((*CiphertextCiphertextEqualityProof)(nil), "sheprotocol.shechain.confidentialtransfers.CiphertextCiphertextEqualityProof")
+	proto.RegisterType((*ZeroBalanceProof)(nil), "sheprotocol.shechain.confidentialtransfers.ZeroBalanceProof")
 }
 
 func init() { proto.RegisterFile("confidentialtransfers/zk.proto", fileDescriptor_71d8640cbb42ddec) }

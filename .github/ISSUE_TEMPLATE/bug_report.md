@@ -7,10 +7,10 @@ assignees: ''
 
 ---
 
-**Seid version**
-Show us output of `seid version --long | head`
+**Shed version**
+Show us output of `shed version --long | head`
 
-**SeiJS package & version**
+**SheJS package & version**
 Check your `package.json` for version number and package (core/react/proto) 
 
 **Chain ID**

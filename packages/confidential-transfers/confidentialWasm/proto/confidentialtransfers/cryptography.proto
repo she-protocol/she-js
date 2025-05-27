@@ -1,5 +1,5 @@
 syntax = "proto3";
-package seiprotocol.seichain.confidentialtransfers;
+package sheprotocol.shechain.confidentialtransfers;
 
 option go_package = "github.com/she-protocol/she-chain/x/confidentialtransfers/types";
 

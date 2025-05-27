@@ -2,17 +2,17 @@ import { useChain } from '@cosmos-kit/react';
 
 import '@interchain-ui/react/styles';
 
-import { truncateSeiAddress } from '@she-js/cosmjs';
+import { truncateSheAddress } from '@she-js/cosmjs';
 import { selectedChain } from '../../constants';
 
 export function WalletConnectButton() {
 	const { isWalletConnected, address, connect, openView } = useChain(selectedChain.chain_name);
 
-	const truncatedSeiAddr = address ? truncateSeiAddress(address) : '';
+	const truncatedSheAddr = address ? truncateSheAddress(address) : '';
 
 	return (
 		<button className="primary" onClick={isWalletConnected ? openView : connect}>
-			{isWalletConnected ? truncateSeiAddress(truncatedSeiAddr) : 'Connect'}
+			{isWalletConnected ? truncateSheAddress(truncatedSheAddr) : 'Connect'}
 		</button>
 	);
 }

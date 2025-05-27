@@ -47,7 +47,7 @@ type GasInfo = {
  * import { GAS_INFO } from '@she-js/registry';
  *
  * const pacific1Info = GAS_INFO['pacific-1'];
- * console.log(pacific1Info.denom); // 'usei'
+ * console.log(pacific1Info.denom); // 'ushe'
  * ```
  */
 export const GAS_INFO: GasInfo = GasInfoJSON as GasInfo;

@@ -1,6 +1,6 @@
 import { type OfflineSigner, Registry } from '@cosmjs/proto-signing';
 import { AminoTypes, SigningStargateClient, StargateClient } from '@cosmjs/stargate';
-import { createSeiAminoTypes, createSeiRegistry, getSigningStargateClient, getStargateClient } from '../stargateClient';
+import { createSheAminoTypes, createSheRegistry, getSigningStargateClient, getStargateClient } from '../stargateClient';
 
 jest.mock('@cosmjs/stargate', () => {
 	const originalModule = jest.requireActual('@cosmjs/stargate');
@@ -24,16 +24,16 @@ describe('stargateClient', () => {
 		jest.clearAllMocks();
 	});
 
-	describe('createSeiRegistry', () => {
+	describe('createSheRegistry', () => {
 		it('should return a Registry instance', () => {
-			const registry = createSeiRegistry();
+			const registry = createSheRegistry();
 			expect(registry).toBeInstanceOf(Registry);
 		});
 	});
 
-	describe('createSeiAminoTypes', () => {
+	describe('createSheAminoTypes', () => {
 		it('should return an AminoTypes instance', () => {
-			const aminoTypes = createSeiAminoTypes();
+			const aminoTypes = createSheAminoTypes();
 			expect(aminoTypes).toBeInstanceOf(AminoTypes);
 		});
 	});
@@ -60,8 +60,8 @@ describe('stargateClient', () => {
 				rpcEndpoint,
 				signer,
 				expect.objectContaining({
-					registry: createSeiRegistry(),
-					aminoTypes: createSeiAminoTypes()
+					registry: createSheRegistry(),
+					aminoTypes: createSheAminoTypes()
 				})
 			);
 		});

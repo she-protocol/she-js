@@ -8,7 +8,7 @@ import {
 	type StargateClientOptions,
 	defaultRegistryTypes
 } from '@cosmjs/stargate';
-import { aminoConverters, seiProtoRegistry } from '@she-js/cosmos/encoding';
+import { aminoConverters, sheProtoRegistry } from '@she-js/cosmos/encoding';
 
 /**
  * Creates a Registry object that maps CosmWasm and She protobuf type identifiers to their actual implementations.
@@ -18,12 +18,12 @@ import { aminoConverters, seiProtoRegistry } from '@she-js/cosmos/encoding';
  * import { Registry } from "@cosmjs/proto-signing";
  * import { defaultRegistryTypes } from "@cosmjs/stargate";
  * import { getSigningStargateClient } from '@she-js/cosmjs';
- * import { seiProtoRegistry } from '@she-js/cosmos/encoding';
+ * import { sheProtoRegistry } from '@she-js/cosmos/encoding';
  *
  * ...
  *
  * // Set up She proto registry
- * const registry = createSeiRegistry();
+ * const registry = createSheRegistry();
  *
  * // Create a client with registry
  * const signingClient = await getSigningStargateClient(RPC_URL, offlineSigner, { registry });
@@ -32,8 +32,8 @@ import { aminoConverters, seiProtoRegistry } from '@she-js/cosmos/encoding';
  * @returns A Registry object that maps CosmWasm and She protobuf type identifiers to their actual implementations.
  * @category Config
  */
-export const createSeiRegistry = (): Registry => {
-	return new Registry([...defaultRegistryTypes, ...(seiProtoRegistry as ReadonlyArray<[string, GeneratedType]>)]);
+export const createSheRegistry = (): Registry => {
+	return new Registry([...defaultRegistryTypes, ...(sheProtoRegistry as ReadonlyArray<[string, GeneratedType]>)]);
 };
 
 /**
@@ -44,18 +44,18 @@ export const createSeiRegistry = (): Registry => {
  * import { Registry } from "@cosmjs/proto-signing";
  * import { defaultRegistryTypes } from "@cosmjs/stargate";
  * import { getSigningStargateClient } from '@she-js/cosmjs';
- * import { createSeiRegistry, createSeiAminoTypes } from "@she-js/cosmos/encoding";
+ * import { createSheRegistry, createSheAminoTypes } from "@she-js/cosmos/encoding";
  *
  * ...
  *
  * // Create a client with registry
- * const signingClient = await getSigningStargateClient(RPC_URL, offlineSigner, { registry: createSeiRegistry(), aminoTypes: createSeiAminoTypes() });
+ * const signingClient = await getSigningStargateClient(RPC_URL, offlineSigner, { registry: createSheRegistry(), aminoTypes: createSheAminoTypes() });
  * ```
  *
  * @returns A mapping of stargate message types to She Amino types.
  * @category Config
  */
-export const createSeiAminoTypes = (): AminoTypes => {
+export const createSheAminoTypes = (): AminoTypes => {
 	return new AminoTypes(aminoConverters);
 };
 
@@ -105,14 +105,14 @@ export const getStargateClient = async (rpcEndpoint: string | HttpEndpoint, opti
  * import { Registry } from "@cosmjs/proto-signing";
  * import { defaultRegistryTypes } from "@cosmjs/stargate";
  * import { getSigningStargateClient } from '@she-js/cosmjs';
- * import { aminoConverters, seiProtoRegistry } from "@she-js/cosmos/encoding";
+ * import { aminoConverters, sheProtoRegistry } from "@she-js/cosmos/encoding";
  *
  * ...
  *
  * // Set up She proto registry
  * const registry = new Registry([
  *   ...defaultRegistryTypes,
- *   ...seiProtoRegistry,
+ *   ...sheProtoRegistry,
  * ]);
  *
  * // Create Amino Types
@@ -130,7 +130,7 @@ export const getStargateClient = async (rpcEndpoint: string | HttpEndpoint, opti
  * import { calculateFee } from '@cosmjs/stargate';
  * import { getSigningStargateClient } from '@she-js/cosmjs';
  *
- * const fee = calculateFee(100000, "0.1usei");
+ * const fee = calculateFee(100000, "0.1ushe");
  * const amount = { amount: SEND_AMOUNT, denom: TOKEN_DENOM };
  *
  * const offlineSigner = await window.compass.getOfflineSigner(chainId);
@@ -151,7 +151,7 @@ export const getStargateClient = async (rpcEndpoint: string | HttpEndpoint, opti
  *
  * // Create message to place an order
  * const msg = Encoder.cosmos.bank.v1beta1.MsgSend.fromPartial({ contractAddr, creator, funds, orders });
- * const fee = calculateFee(150000, "0.1usei");
+ * const fee = calculateFee(150000, "0.1ushe");
  *
  * // Sign and broadcast the message
  * const response = signingClient.signAndBroadcast(firstAccount.address, [msg], fee);
@@ -168,8 +168,8 @@ export const getSigningStargateClient = async (
 	signer: OfflineSigner,
 	options?: SigningStargateClientOptions
 ): Promise<SigningStargateClient> => {
-	const registry = createSeiRegistry();
-	const aminoTypes = createSeiAminoTypes();
+	const registry = createSheRegistry();
+	const aminoTypes = createSheAminoTypes();
 	return SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
 		registry,
 		aminoTypes,

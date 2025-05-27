@@ -29,9 +29,9 @@ import { MsgSend } from '@she-js/cosmos/types/cosmos/bank/v1beta1';
 
 // Create an object that conforms to the MsgSend type
 const msgSend: MsgSend = {
-  from_address: 'sei1hafptm4zxy5nw8rd2pxyg83c5ls2v62tstzuv2',
-  to_address: 'sei1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9',
-  amount: [{ denom: 'usei', amount: '100' }]
+  from_address: 'she1hafptm4zxy5nw8rd2pxyg83c5ls2v62tstzuv2',
+  to_address: 'she1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9',
+  amount: [{ denom: 'ushe', amount: '100' }]
 };
 ```
 
@@ -45,14 +45,14 @@ const msgCreateDenom: MsgCreateDenom = {
   sender: accounts[0].address,
   subdenom: "mytoken",
   allow_list: {
-    addresses: ["sei123..."],
+    addresses: ["she123..."],
   }
 }
 
 // Create an object that conforms to the MsgMint type
 const msgMint: MsgMint = {
   sender: accounts[0].address,
-  amount: { denom: "usei", amount: "100000" },
+  amount: { denom: "ushe", amount: "100000" },
 }
 
 // Do what you want with the messages
@@ -81,7 +81,7 @@ import { Encoder } from '@she-js/cosmos/encoding';
 import { aminoConverters } from "@she-js/cosmos/encoding";
 
 // Import typeUrl registry for cosmjs Stargate clients
-import { seiProtoRegistry } from "@she-js/cosmos/encoding";
+import { sheProtoRegistry } from "@she-js/cosmos/encoding";
 ```
 
 ### Encoding/Decoding and getting type URLs.
@@ -92,9 +92,9 @@ import { Encoder } from '@she-js/cosmos/encoding';
 
 // Follow the path to the desired module and message type
 const msgSend = Encoder.cosmos.bank.v1beta1.MsgSend.fromPartial({
-  from_address: 'sei1hafptm4zxy5nw8rd2pxyg83c5ls2v62tstzuv2',
-  to_address: 'sei1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9',
-  amount: [{ denom: 'usei', amount: '100' }]
+  from_address: 'she1hafptm4zxy5nw8rd2pxyg83c5ls2v62tstzuv2',
+  to_address: 'she1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9',
+  amount: [{ denom: 'ushe', amount: '100' }]
 });
 
 
@@ -118,7 +118,7 @@ The package provides pre-built registries and amino converters for usage with `@
 
 ```typescript
 import { Encoder } from '@she-js/cosmos/encoding';
-import { seiProtoRegistry } from "@she-js/cosmos/encoding";
+import { sheProtoRegistry } from "@she-js/cosmos/encoding";
 import { aminoConverters } from "@she-js/cosmos/encoding";
 
 import {SigningStargateClient} from "@cosmjs/stargate";
@@ -129,7 +129,7 @@ const offlineSigner = await window.compass.getOfflineSigner("arctic-1");
 const accounts = await offlineSigner.getAccounts();
 
 // Create a @cosmjs/stargate registry with the She proto registry
-const registry = new Registry(seiProtoRegistry);
+const registry = new Registry(sheProtoRegistry);
 const aminoTypes = new AminoTypes(aminoConverters);
 
 // Create a Stargate client with the registry and amino types
@@ -138,15 +138,15 @@ const stargateClient = await SigningStargateClient.connectWithSigner(
   offlineSigner,
   {
     aminoTypes: new AminoTypes(aminoConverters),
-    registry: new Registry(seiProtoRegistry),
+    registry: new Registry(sheProtoRegistry),
   },
 );
 
 // Create a MsgSend object
 const msgSend = Encoder.cosmos.bank.v1beta1.MsgSend.fromPartial({
   from_address: accounts[0].address,
-  to_address: "sei1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9",
-  amount: [{ denom: "usei", amount: "10" }]
+  to_address: "she1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9",
+  amount: [{ denom: "ushe", amount: "10" }]
 });
 
 // Create a message object with the typeUrl and value. (For Stargate clients the value isn't encoded, but gRPC clients typically require it to be encoded)
@@ -154,7 +154,7 @@ const message = { typeUrl: `/${Encoder.cosmos.bank.v1beta1.MsgSend.$type}`, valu
 
   
 const txResponse = await stargateClient.signAndBroadcast(accounts[0].address, [message], {
-  amount: [{ denom: "usei", amount: "100000" }],
+  amount: [{ denom: "ushe", amount: "100000" }],
   gas: "200000",
 });
 
@@ -171,8 +171,8 @@ import { Encoder } from '@she-js/cosmos/encoding';
 
 // Encoder.cosmos.bank.v1beta1.MsgSend is already typed using the `MsgSend` type from the @she-js/cosmos/types package
 const msgSend = Encoder.cosmos.bank.v1beta1.MsgSend.fromPartial({
-  from_address: 'sei1hafptm4zxy5nw8rd2pxyg83c5ls2v62tstzuv2',
-  to_address: 'sei1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9'
+  from_address: 'she1hafptm4zxy5nw8rd2pxyg83c5ls2v62tstzuv2',
+  to_address: 'she1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9'
 });
 
 // Encode the message
@@ -191,9 +191,9 @@ import { MsgSend } from '@she-js/cosmos/types/cosmos/bank/v1beta1';
 
 // This type can be used to create the proto message directly
 const msgSend: MsgSend = {
-  from_address: 'sei1hafptm4zxy5nw8rd2pxyg83c5ls2v62tstzuv2',
-  to_address: 'sei1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9',
-  amount: [{ denom: 'usei', amount: '100' }]
+  from_address: 'she1hafptm4zxy5nw8rd2pxyg83c5ls2v62tstzuv2',
+  to_address: 'she1v6459sl87jyfkvzmy6y8a6j2fj8k5r6x2n2l9',
+  amount: [{ denom: 'ushe', amount: '100' }]
 };
 
 // Encode the message
@@ -208,7 +208,7 @@ const protoMsgSend = { typeUrl: `/${MsgSend.$type}`, value: encoded };
 
 ### Usage with Ledger
 ```typescript
-import {createTransportAndApp, SeiLedgerOfflineAminoSigner} from "@she-js/ledger";
+import {createTransportAndApp, SheLedgerOfflineAminoSigner} from "@she-js/ledger";
 
 import { Encoder } from '@she-js/cosmos/encoding';
 
@@ -217,13 +217,13 @@ import { aminoConverters } from "@she-js/cosmos/encoding";
 import { AminoTypes, SigningStargateClient, coin } from "@cosmjs/stargate";
 
 const hdPath = "m/44'/60'/0'/0/0"
-const validatorAddress = "seivaloper1r0tmhjhxmvwlzq5sy3z83qnyvc74uvs9ykek9l";
+const validatorAddress = "shevaloper1r0tmhjhxmvwlzq5sy3z83qnyvc74uvs9ykek9l";
 
 const { app } = await createTransportAndApp();
 
 const cosmosAddressData = await app.getCosmosAddress(hdPath, false);
 
-const ledgerOfflineAminoSigner = new SeiLedgerOfflineAminoSigner(app, hdPath);
+const ledgerOfflineAminoSigner = new SheLedgerOfflineAminoSigner(app, hdPath);
 const aminoTypes = new AminoTypes(aminoConverters);
 const signingStargateClient = await SigningStargateClient.connectWithSigner(
   rpcUrl,
@@ -232,14 +232,14 @@ const signingStargateClient = await SigningStargateClient.connectWithSigner(
 );
 
 const fee = {
-  amount: [{denom: "usei", amount: "20000"}],
+  amount: [{denom: "ushe", amount: "20000"}],
   gas: "200000",
 };
 
 const msgDelegate = Encoder.cosmos.staking.v1beta1.MsgDelegate.fromPartial({
   delegator_address: cosmosAddressData.address,
   validator_address: validatorAddress,
-  amount: coin(2000, "usei"),
+  amount: coin(2000, "ushe"),
 });
 
 const protoMessage = { typeUrl: `/${Encoder.cosmos.staking.v1beta1.MsgDelegate.$type}`, value: msgDelegate };
@@ -258,7 +258,7 @@ if (result.code === 0) {
 `@she-js/cosmos/encoding/amino` `@she-js/cosmos/encoding/registry` and export the necessary types and converters for usage with `@cosmjs/stargate`. These are used to set up the amino registry and types for signing clients.
 
 ```typescript
-import { aminoConverters, seiProtoRegistry } from "@she-js/cosmos/encoding";
+import { aminoConverters, sheProtoRegistry } from "@she-js/cosmos/encoding";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { Registry } from "@cosmjs/proto-signing";
 
@@ -269,7 +269,7 @@ const signingStargateClient = await SigningStargateClient.connectWithSigner(
   offlineSigner,
   {
     aminoTypes: new AminoTypes(aminoConverters),
-    registry: new Registry(seiProtoRegistry),
+    registry: new Registry(sheProtoRegistry),
   },
 );
 ```
@@ -289,7 +289,7 @@ Import the Querier and follow the path to the desired module and message type. R
 import { Querier } from '@she-js/cosmos/rest';
 
 // Follow the path to the desired module and message type
-const { balances } = await Querier.cosmos.bank.v1beta1.AllBalances({ address: seiAddress }, { pathPrefix: chainConfig.restUrl });
+const { balances } = await Querier.cosmos.bank.v1beta1.AllBalances({ address: sheAddress }, { pathPrefix: chainConfig.restUrl });
 ```
 
 ## Local Package Development

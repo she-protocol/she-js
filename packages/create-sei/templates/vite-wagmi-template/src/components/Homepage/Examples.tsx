@@ -14,7 +14,7 @@ function Examples() {
 	const { address } = useAccount();
 	const { writeContractAsync } = useWriteContract();
 
-	const formatLargeSeiNumber = (num: string, decimals: number): string => {
+	const formatLargeSheNumber = (num: string, decimals: number): string => {
 		if (num.length > 10) {
 			return (
 				(Number(num) / 1000000 / 1000000000).toLocaleString(navigator.language, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + ' B'
@@ -71,8 +71,8 @@ function Examples() {
 			return undefined;
 		}
 		const weiBalance = await publicClient.getBalance({ address });
-		const seiBalance = formatEther(weiBalance);
-		setBalance(seiBalance);
+		const sheBalance = formatEther(weiBalance);
+		setBalance(sheBalance);
 	};
 
 	const renderBalanceExample = () => {
@@ -110,11 +110,11 @@ function Examples() {
 			address: BANK_PRECOMPILE_ADDRESS,
 			abi: BANK_PRECOMPILE_ABI,
 			functionName: 'supply',
-			args: ['usei']
+			args: ['ushe']
 		};
 		try {
 			const response = (await publicClient.readContract(params)) as BigInt;
-			const supply = formatLargeSeiNumber(response.toString(), 1);
+			const supply = formatLargeSheNumber(response.toString(), 1);
 			setSupply(supply);
 		} catch (e) {
 			console.log(e);
@@ -153,7 +153,7 @@ function Examples() {
 			return;
 		}
 
-		const COUNTER_CONTRACT_ADDRESS = 'sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m';
+		const COUNTER_CONTRACT_ADDRESS = 'she14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m';
 
 		const queryMsg = toHex(JSON.stringify({ get_count: {} }));
 
@@ -178,7 +178,7 @@ function Examples() {
 			return;
 		}
 
-		const COUNTER_CONTRACT_ADDRESS = 'sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m';
+		const COUNTER_CONTRACT_ADDRESS = 'she14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m';
 
 		const execMsg = toHex(JSON.stringify({ increment: {} }));
 		const coins = toHex('[]');

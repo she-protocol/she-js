@@ -23,7 +23,7 @@ export const ETHERS_ADDRESS_PRECOMPILE_ABI = ADDRESS_PRECOMPILE_ABI as Interface
  *
  * const addressPrecompileContract = getAddressPrecompileEthersV6Contract(signer);
  *
- * const seiAddr = await addressPrecompileContract.getSeiAddr(accounts[0]);
+ * const sheAddr = await addressPrecompileContract.getSheAddr(accounts[0]);
  * ```
  *
  * @param runner A [Provider](https://docs.ethers.org/v6/api/providers/) (read-only) or ethers.Signer to use with the contract.

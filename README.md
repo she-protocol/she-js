@@ -1,6 +1,6 @@
-# SeiJS
+# SheJS
 
-SeiJS is a monorepo that contains multiple NPM libraries for writing applications that interact with She.
+SheJS is a monorepo that contains multiple NPM libraries for writing applications that interact with She.
 
 ## Documentation
 
@@ -11,7 +11,7 @@ You can also refer to the [typedoc documentation](https://she-protocol.github.io
 
 ## Packages
 
-SeiJS consists of smaller NPM packages within the @she-js namespace. For more detailed documentation on each package, please refer to the table below.
+SheJS consists of smaller NPM packages within the @she-js namespace. For more detailed documentation on each package, please refer to the table below.
 
 | Package                                                 | Description                                                                                                                     |
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
